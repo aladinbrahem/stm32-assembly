@@ -1,0 +1,9 @@
+;#<FEEDBACK># ARM Linker, 5050169: Last Updated: Tue Feb 23 22:22:07 2016
+;VERSION 0.2
+;FILE main.o
+;FILE startup_stm32f746.o
+;FILE system_stm32f746.o
+HAL_Init <= USED 0
+HSE_Configuration <= USED 0
+NVIC_SetPriorityGrouping <= USED 0
+SCB_EnableICache <= USED 0

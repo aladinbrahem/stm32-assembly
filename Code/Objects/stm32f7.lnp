@@ -1,0 +1,11 @@
+--cpu Cortex-M7.fp.sp --fpu=FPv4-SP
+".\objects\startup_stm32f746.o"
+".\objects\stm32f746_hal.o"
+".\objects\bsp_led.o"
+".\objects\bsp_timer.o"
+".\objects\main.o"
+".\objects\system_stm32f746.o"
+--library_type=microlib --strict --scatter ".\Objects\stm32f7.sct"
+--entry Reset_Handler   --diag_suppress=L6314 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\stm32f7.map" -o .\Objects\stm32f7.axf

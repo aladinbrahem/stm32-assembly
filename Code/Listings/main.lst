@@ -1,0 +1,175 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         ;*******************************************************
+                       *****************************************************
+    2 00000000         ; * File Name   : main.s
+    3 00000000         ; * Author      : Bryant
+    4 00000000         ; * Version     : V1.0.0
+    5 00000000         ; * Date        : Feb-22-2016
+    6 00000000         ; * Description : Main file of this project
+    7 00000000         ; ******************************************************
+                       *******************************************************
+    8 00000000         ;Includes ----------------------------------------------
+                       ------------------------------------------------------- 
+                                                         
+    9 00000000                 AREA             MAIN,CODE,READONLY
+   10 00000000         
+   11 00000000         
+   12 00000000                 EXTERN           g_timerFlag
+   13 00000000         ;*******************************************************
+                       *******************************************************
+   14 00000000         ; * Function Name   : main
+   15 00000000         ; * Description     : main function body
+   16 00000000         ; * Input Variable  : None
+   17 00000000         ; * Return Variable : None
+   18 00000000         ; * Author          : Bryant
+   19 00000000         ; * Create Date     : Feb-23-2016
+   20 00000000         ; * Call            : Outside
+   21 00000000         ;*******************************************************
+                       ********************************************************
+                       /
+   22 00000000         MAIN_FUNCTION
+                               PROC
+   23 00000000                 EXPORT           MAIN_FUNCTION
+   24 00000000                 IMPORT           HAL_Init
+   25 00000000                 IMPORT           SystemClockConfig
+   26 00000000                 IMPORT           bsp_LedInit
+   27 00000000                 IMPORT           bsp_TimerInit
+   28 00000000                 IMPORT           bsp_TimerInit
+   29 00000000                 IMPORT           bsp_LedToggle
+   30 00000000 B500            PUSH             {LR}
+   31 00000002 F7FF FFFE       BL               HAL_Init
+   32 00000006 F7FF FFFE       BL               SystemClockConfig
+   33 0000000A F7FF FFFE       BL               bsp_LedInit
+   34 0000000E F7FF FFFE       BL               bsp_TimerInit
+   35 00000012         WHILE
+   36 00000012 4806            LDR              R0,=g_timerFlag
+   37 00000014 6801            LDR              R1,[R0]
+   38 00000016 2901            CMP              R1,#1
+   39 00000018 D1FB            BNE              WHILE
+   40 0000001A 4804            LDR              R0,=g_timerFlag
+   41 0000001C F04F 0100       MOV              R1,#0
+   42 00000020 6001            STR              R1,[R0]
+   43 00000022 F7FF FFFE       BL               bsp_LedToggle
+   44 00000026 E7F4            B                WHILE
+   45 00000028 BD00            POP              {PC}
+   46 0000002A                 ENDP
+   47 0000002A         
+   48 0000002A         
+   49 0000002A         
+   50 0000002A         
+   51 0000002A         
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+   52 0000002A 00 00           ALIGN
+   53 0000002C         ;*******************************************************
+                       *********END OF FILE************************************
+                       ***********************
+   54 0000002C         
+   55 0000002C                 END
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M7.fp.sp --fpu=F
+Pv4-SP --apcs=interwork --depend=.\objects\main.d -o.\objects\main.o -IE:\Bryan
+t\stm32-assembly\stm32f746\RTE -I"D:\Program Files (x86)\ARM\PACK\Keil\STM32F7x
+x_DFP\2.3.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include" -I"D:\Program Files (x86
+)\ARM\CMSIS\Include" --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VER
+SION SETA 515" --predefine="STM32F746xx SETA 1" --list=.\listings\main.lst main
+.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+MAIN 00000000
+
+Symbol: MAIN
+   Definitions
+      At line 9 in file main.s
+   Uses
+      None
+Comment: MAIN unused
+MAIN_FUNCTION 00000000
+
+Symbol: MAIN_FUNCTION
+   Definitions
+      At line 22 in file main.s
+   Uses
+      At line 23 in file main.s
+Comment: MAIN_FUNCTION used once
+WHILE 00000012
+
+Symbol: WHILE
+   Definitions
+      At line 35 in file main.s
+   Uses
+      At line 39 in file main.s
+      At line 44 in file main.s
+
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+HAL_Init 00000000
+
+Symbol: HAL_Init
+   Definitions
+      At line 24 in file main.s
+   Uses
+      At line 31 in file main.s
+Comment: HAL_Init used once
+SystemClockConfig 00000000
+
+Symbol: SystemClockConfig
+   Definitions
+      At line 25 in file main.s
+   Uses
+      At line 32 in file main.s
+Comment: SystemClockConfig used once
+bsp_LedInit 00000000
+
+Symbol: bsp_LedInit
+   Definitions
+      At line 26 in file main.s
+   Uses
+      At line 33 in file main.s
+Comment: bsp_LedInit used once
+bsp_LedToggle 00000000
+
+Symbol: bsp_LedToggle
+   Definitions
+      At line 29 in file main.s
+   Uses
+      At line 43 in file main.s
+Comment: bsp_LedToggle used once
+bsp_TimerInit 00000000
+
+Symbol: bsp_TimerInit
+   Definitions
+      At line 27 in file main.s
+      At line 28 in file main.s
+   Uses
+      At line 34 in file main.s
+Warning: bsp_TimerInit multiply definedComment: bsp_TimerInit used once
+g_timerFlag 00000000
+
+Symbol: g_timerFlag
+   Definitions
+      At line 12 in file main.s
+   Uses
+      At line 36 in file main.s
+      At line 40 in file main.s
+
+6 symbols
+345 symbols in table
